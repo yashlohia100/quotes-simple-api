@@ -1,12 +1,16 @@
 import express from 'express';
 import morgan from 'morgan';
+import cors from 'cors';
 import quoteRouter from './api/quote/quote-routes.mjs';
 
 const app = express();
 
+app.use(morgan('dev'));
+
+app.use(cors({ origin: 'http://localhost:5173' }));
+
 if (process.env.NODE_ENV === 'development') {
   console.log('In development mode');
-  app.use(morgan('dev'));
 } else {
   console.log('In production mode');
 }
