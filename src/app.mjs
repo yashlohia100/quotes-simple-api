@@ -1,5 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
+import quoteRouter from './api/quote/quote-routes.mjs';
 
 const app = express();
 
@@ -9,6 +10,8 @@ if (process.env.NODE_ENV === 'development') {
 } else {
   console.log('In production mode');
 }
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.status(200).json({
@@ -42,5 +45,7 @@ app.get('/api/quotes/:id', (req, res) => {
     quote,
   });
 });
+
+app.use('/api/v1/quotes', quoteRouter);
 
 export default app;
