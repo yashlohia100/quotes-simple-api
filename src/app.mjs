@@ -7,7 +7,8 @@ const app = express();
 
 app.use(morgan('dev'));
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+// app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: 'https://quotes-my-app.netlify.app' }));
 
 if (process.env.NODE_ENV === 'development') {
   console.log('In development mode');
